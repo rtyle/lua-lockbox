@@ -1,7 +1,6 @@
 require("lockbox").insecure();
 
 local Bit = require("lockbox.util.bit");
-local String = require("string");
 local Math = require("math");
 local Queue = require("lockbox.util.queue");
 
@@ -381,7 +380,7 @@ local RIPEMD160 = function()
 
         local fmt = "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x";
 
-        return String.format(fmt,
+        return string.format(fmt,
                  b0, b1, b2, b3, b4, b5, b6, b7, b8, b9,
                 b10, b11, b12, b13, b14, b15, b16, b17, b18, b19);
     end

@@ -1,7 +1,6 @@
 require("lockbox").insecure();
 
 local Bit = require("lockbox.util.bit");
-local String = require("string");
 local Queue = require("lockbox.util.queue");
 
 local SUBST = {
@@ -123,7 +122,7 @@ local MD2 = function()
     end
 
     public.asHex = function()
-        return String.format("%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+        return string.format("%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
                 X[ 0], X[ 1], X[ 2], X[ 3], X[ 4], X[ 5], X[ 6], X[ 7],
                 X[ 8], X[ 9], X[10], X[11], X[12], X[13], X[14], X[15]);
     end
