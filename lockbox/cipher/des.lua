@@ -3,7 +3,6 @@ require("lockbox").insecure();
 local Array = require("lockbox.util.array");
 
 local Bit = require("lockbox.util.bit");
-local Math = require("math");
 
 
 local AND = Bit.band;
@@ -146,8 +145,8 @@ local packBytes = function(bits)
     local bytes = {}
 
     for k, _ in pairs(bits) do
-        local index = Math.floor((k - 1) / 8) + 1;
-        local shift = 7 - Math.fmod((k - 1), 8);
+        local index = math.floor((k - 1) / 8) + 1;
+        local shift = 7 - math.fmod((k - 1), 8);
 
         local bit = bits[k];
         local byte = bytes[index];

@@ -1,7 +1,6 @@
 require("lockbox").insecure();
 
 local Bit = require("lockbox.util.bit");
-local Math = require("math");
 local Queue = require("lockbox.util.queue");
 
 local AND = Bit.band;
@@ -31,7 +30,7 @@ end
 
 local dword2bytes = function(i)
     local b4, b5, b6, b7 = word2bytes(i);
-    local b0, b1, b2, b3 = word2bytes(Math.floor(i / 0x100000000));
+    local b0, b1, b2, b3 = word2bytes(math.floor(i / 0x100000000));
     return b0, b1, b2, b3, b4, b5, b6, b7;
 end
 

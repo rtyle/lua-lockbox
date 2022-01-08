@@ -1,7 +1,6 @@
 local Bit = require("lockbox.util.bit");
 local Array = require("lockbox.util.array");
 local Stream = require("lockbox.util.stream");
-local Math = require("math");
 
 local AND = Bit.band;
 local RSHIFT = Bit.rshift;
@@ -86,7 +85,7 @@ local PBKDF2 = function()
     end
 
     public.finish = function()
-        local blocks = Math.ceil(dKeyLen / blockLen);
+        local blocks = math.ceil(dKeyLen / blockLen);
 
         dKey = {};
 
