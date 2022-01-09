@@ -6,6 +6,14 @@ return {
     lshift  = function(l, r)    return l << r end,
     rshift  = function(l, r)    return l >> r end,
 
-    lrotate = function(l, r) r = r % 32; return 0xffffffff & ((l << r) | (l >> (32 - r))) end,
-    rrotate = function(l, r) r = r % 32; return 0xffffffff & ((l >> r) | (l << (32 - r))) end,
+    lrotate = function(l, r)
+        l = l & 0xffffffff
+        r = r & 0x1f
+        return ((l << r) & 0xffffffff) | (l >> (32 - r))
+    end,
+    rrotate = function(l, r)
+        l = l & 0xffffffff
+        r = r & 0x1f
+        return (l >> r) | (0xffffffff & (l << (32 - r)))
+    end,
 }
