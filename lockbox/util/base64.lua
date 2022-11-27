@@ -1,4 +1,3 @@
-local String = require("string");
 local Bit = require("lockbox.util.bit");
 
 local Stream = require("lockbox.util.stream");
@@ -81,7 +80,7 @@ Base64.toStream = function(base64)
 
       local yield = coroutine.yield;
 
-      for c in String.gmatch(base64, ".") do
+      for c in string.gmatch(base64, ".") do
           if (c == "=") then
               bits = RSHIFT(bits, 2); bitCount = bitCount - 2;
           else

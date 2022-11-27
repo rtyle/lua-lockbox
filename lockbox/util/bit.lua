@@ -1,25 +1,19 @@
-local ok, e
-ok = nil
-if not ok then
-    ok, e = pcall(require, "bit") -- the LuaJIT one ?
-end
-if not ok then
-    ok, e = pcall(require, "bit32") -- Lua 5.2
-end
-if not ok then
-    ok, e = pcall(require, "bit.numberlua") -- for Lua 5.1, https://github.com/tst2005/lua-bit-numberlua/
-end
-if not ok then
-    error("no bitwise support found", 2)
-end
-assert(type(e) == "table", "invalid bit module")
+return {
+    band    = function(l, r)    return l & r end,
+    bor     = function(l, r)    return l | r end,
+    bxor    = function(l, r)    return l ~ r end,
+    bnot    = function(u)       return ~u end,
+    lshift  = function(l, r)    return l << r end,
+    rshift  = function(l, r)    return l >> r end,
 
--- Workaround to support Lua 5.2 bit32 API with the LuaJIT bit one
-if e.rol and not e.lrotate then
-    e.lrotate = e.rol
-end
-if e.ror and not e.rrotate then
-    e.rrotate = e.ror
-end
-
-return e
+    lrotate = function(l, r)
+        l = l & 0xffffffff
+        r = r & 0x1f
+        return ((l << r) & 0xffffffff) | (l >> (32 - r))
+    end,
+    rrotate = function(l, r)
+        l = l & 0xffffffff
+        r = r & 0x1f
+        return (l >> r) | (0xffffffff & (l << (32 - r)))
+    end,
+}

@@ -1,5 +1,4 @@
 local Queue = require("lockbox.util.queue");
-local String = require("string");
 
 local Stream = {};
 
@@ -8,7 +7,7 @@ Stream.fromString = function(string)
     local i = 0;
     return function()
         i = i + 1;
-        return String.byte(string, i);
+        return string.byte(string, i);
     end
 end
 
@@ -19,7 +18,7 @@ Stream.toString = function(stream)
 
     local byte = stream();
     while byte ~= nil do
-        array[i] = String.char(byte);
+        array[i] = string.char(byte);
         i = i + 1;
         byte = stream();
     end
@@ -60,15 +59,15 @@ end
 
 local fromHexTable = {};
 for i = 0, 255 do
-    fromHexTable[String.format("%02X", i)] = i;
-    fromHexTable[String.format("%02x", i)] = i;
+    fromHexTable[string.format("%02X", i)] = i;
+    fromHexTable[string.format("%02x", i)] = i;
 end
 
 Stream.fromHex = function(hex)
     local queue = Queue();
 
-    for i = 1, String.len(hex) / 2 do
-        local h = String.sub(hex, i * 2 - 1, i * 2);
+    for i = 1, string.len(hex) / 2 do
+        local h = string.sub(hex, i * 2 - 1, i * 2);
         queue.push(fromHexTable[h]);
     end
 
@@ -79,7 +78,7 @@ end
 
 local toHexTable = {};
 for i = 0, 255 do
-    toHexTable[i] = String.format("%02X", i);
+    toHexTable[i] = string.format("%02X", i);
 end
 
 Stream.toHex = function(stream)

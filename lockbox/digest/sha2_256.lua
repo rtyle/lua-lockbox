@@ -1,6 +1,4 @@
 local Bit = require("lockbox.util.bit");
-local String = require("string");
-local Math = require("math");
 local Queue = require("lockbox.util.queue");
 
 local CONSTANTS = {
@@ -44,7 +42,7 @@ end
 
 local dword2bytes = function(i)
     local b4, b5, b6, b7 = word2bytes(i);
-    local b0, b1, b2, b3 = word2bytes(Math.floor(i / 0x100000000));
+    local b0, b1, b2, b3 = word2bytes(math.floor(i / 0x100000000));
     return b0, b1, b2, b3, b4, b5, b6, b7;
 end
 
@@ -191,7 +189,7 @@ local SHA2_256 = function()
         local b24, b25, b26, b27 = word2bytes(h6);
         local b28, b29, b30, b31 = word2bytes(h7);
 
-        return String.format(fmt, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15
+        return string.format(fmt, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15
                 , b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, b28, b29, b30, b31);
     end
 
