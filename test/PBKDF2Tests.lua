@@ -1,3 +1,6 @@
+local Lockbox = require("lockbox")
+Lockbox.ALLOW_INSECURE = true
+
 local PBKDF2 = require("lockbox.kdf.pbkdf2");
 local HMAC = require("lockbox.mac.hmac");
 local SHA1 = require("lockbox.digest.sha1");

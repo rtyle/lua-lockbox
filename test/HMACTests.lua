@@ -1,3 +1,6 @@
+local Lockbox = require("lockbox")
+Lockbox.ALLOW_INSECURE = true
+
 local String = require("string");
 local Stream = require("lockbox.util.stream");
 local Array = require("lockbox.util.array");

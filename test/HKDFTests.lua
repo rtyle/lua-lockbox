@@ -1,3 +1,6 @@
+local Lockbox = require("lockbox")
+Lockbox.ALLOW_INSECURE = true
+
 local HKDF = require("lockbox.kdf.hkdf");
 local SHA1 = require("lockbox.digest.sha1");
 local SHA256 = require("lockbox.digest.sha2_256");

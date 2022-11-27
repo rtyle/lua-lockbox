@@ -1,3 +1,6 @@
+local Lockbox = require("lockbox")
+Lockbox.ALLOW_INSECURE = true
+
 local Stream = require("lockbox.util.stream");
 local Digest = require("lockbox.digest.md4");
 local String = require("string");
